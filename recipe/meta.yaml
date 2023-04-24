@@ -21,13 +21,16 @@ requirements:
     - pip
   run:
     - python >=3.8
-    - numpy >=1.20
+    - numpy {{ numpy }}
     - opt_einsum
     - scipy >=1.5
     - ml_dtypes >=0.0.3
+    - re2
+    - c-ares
+    - nccl {{ nccl }}          #[build_type == 'cuda']
     # Not declared in the metadata but essential to this package.
     # update minimum from https://github.com/google/jax/blob/main/jax/version.py#L21
-    - jaxlib >=0.4.6
+    - jaxlib {{ version }}
 
 test:
   imports:
