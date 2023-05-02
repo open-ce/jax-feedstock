@@ -17,13 +17,14 @@ build:
 
 requirements:
   host:
-    - python >=3.8
+    - python
     - pip
   run:
-    - python >=3.8
+    - python
     - numpy {{ numpy }}
+    - libopenblas {{ openblas }}
     - opt_einsum
-    - scipy >=1.5
+    - scipy {{ scipy }}
     - ml_dtypes >=0.0.3
     - re2
     - c-ares
