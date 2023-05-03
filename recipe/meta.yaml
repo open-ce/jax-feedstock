@@ -1,5 +1,5 @@
 {% set name = "jax" %}
-{% set version = "0.4.8" %}
+{% set version = "0.4.7" %}
 
 package:
   name: jax
@@ -8,26 +8,30 @@ package:
 source:
   # only pull source after PyPI release.
   url: https://pypi.io/packages/source/j/jax/jax-{{ version }}.tar.gz
-  sha256: 08116481f7336db16c24812bfb5e6f9786915f4c2f6ff4028331fa69e7535202
+  sha256: 5e7002d74db25f97c99b979d4ba1233b1ef26e1597e5fc468ad11d1c8a9dc4f8
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.8
+    - python
     - pip
   run:
-    - python >=3.8
-    - numpy >=1.20
+    - python
+    - numpy {{ numpy }}
+    - libopenblas {{ openblas }}
     - opt_einsum
-    - scipy >=1.5
+    - scipy {{ scipy }}
     - ml_dtypes >=0.0.3
+    - re2
+    - c-ares
+    - nccl {{ nccl }}          #[build_type == 'cuda']
     # Not declared in the metadata but essential to this package.
     # update minimum from https://github.com/google/jax/blob/main/jax/version.py#L21
-    - jaxlib >=0.4.7
+    - jaxlib {{ version }}
 
 test:
   imports:
@@ -47,6 +51,4 @@ about:
 
 extra:
   recipe-maintainers:
-    - ocefpaf
-    - ericmjl
-    - ngam
+    - open-ce/open-ce-dev-team
