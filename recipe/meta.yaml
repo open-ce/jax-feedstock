@@ -17,8 +17,6 @@ build:
   string: {{ build_type }}{{ cudatoolkit | replace(".*", "") }}_py{{ python | replace(".", "") }}_{{ PKG_BUILDNUM }} #[build_type == 'cuda']
 
 requirements:
-  build:
-    - cudatoolkit {{ cudatoolkit }}            #[build_type == 'cuda']
   host:
     - python {{ python }}
     - pip
