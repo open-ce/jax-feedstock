@@ -34,7 +34,7 @@ requirements:
     # update minimum from https://github.com/google/jax/blob/main/jax/version.py#L21
     - jaxlib {{ version }}=cpu*    #[build_type == 'cpu']
     - jaxlib {{ version }}=cuda*   #[build_type == 'cuda']
-    - cudatoolkit {{ cudatoolkit }}
+    - cudatoolkit {{ cudatoolkit }} #[build_type == 'cuda']
 
 test:
   imports:
